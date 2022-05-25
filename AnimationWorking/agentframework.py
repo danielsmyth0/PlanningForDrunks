@@ -45,7 +45,7 @@ class Agent():
         if self.environment[newx][newy] == self.house:
             self.isHome = True
             return True
-        elif self.environment[newx][newy] == 0:
+        elif self.environment[newx][newy] == 0 or self.environment[newx][newy] == 1:
             return True
         else:
             return False

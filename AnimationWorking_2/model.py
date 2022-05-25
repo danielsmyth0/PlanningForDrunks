@@ -4,6 +4,15 @@ import csv
 import matplotlib.pyplot as mpl
 import matplotlib.animation 
 import agentframework
+import matplotlib
+matplotlib.use('TkAgg')
+import tkinter
+
+
+
+
+
+
 
 
 '''Set up directories'''
@@ -89,9 +98,10 @@ def update(frame_number):
     for i in range(num_of_agents):
         mpl.scatter(agents[i]._x,agents[i]._y, color = "grey")
 
-'''Animate agents'''
-animation = matplotlib.animation.FuncAnimation(fig, update, interval=0.01, repeat=False, frames=gen_function) 
-matplotlib.pyplot.show()
+'''Define function to execute model'''
+def run():
+    animation = matplotlib.animation.FuncAnimation(fig, update, interval=1, repeat=False, frames=gen_function)
+    canvas.draw()
 
 
 '''Environment Data output'''
@@ -111,3 +121,14 @@ with open(file, 'w', newline='') as q1:
         writer.writerow(row)
 print("Heatmap data is located in " + file)
 
+
+'''Set up GUI'''
+root = tkinter.Tk()
+root.wm_title("Planning for drunks")
+canvas = matplotlib.backends.backend_tkagg.FigureCanvasTkAgg(fig, master=root)
+canvas._tkcanvas.pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+menu_bar = tkinter.Menu(root)
+root.config(menu=menu_bar)
+model_menu = tkinter.Menu(menu_bar)
+menu_bar.add_cascade(label="Execute Model", command = run)
+tkinter.mainloop()

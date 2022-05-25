@@ -97,7 +97,7 @@ matplotlib.pyplot.show()
 '''Environment Data output'''
 file = os.path.join(outputs, 'output_env.csv')
 with open(file, 'w', newline='') as q1:
-    writer = csv.writer(q1, delimiter=' ')
+    writer = csv.writer(q1, delimiter=',')
     for row in environment:
         writer.writerow(row)
 print("Environment data is located in " + file)
@@ -106,7 +106,7 @@ print("Environment data is located in " + file)
 '''Density Data output'''
 file = os.path.join(outputs, 'output_heatmap.csv')
 with open(file, 'w', newline='') as q1:
-    writer = csv.writer(q1, delimiter=' ')
+    writer = csv.writer(q1, delimiter=',')
     for row in heatmap:
         writer.writerow(row)
 print("Heatmap data is located in " + file)

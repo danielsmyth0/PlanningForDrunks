@@ -65,7 +65,7 @@ def gen_function(b = [0]):
     a = 0
     global num_of_agents
     while  num_of_agents > 0:
-        yield a			#: Returns control and waits next call.
+        yield a			
         a = a + 1
 
 def update(frame_number):
@@ -75,7 +75,7 @@ def update(frame_number):
     fig.clear()
     iteration_num += 1
     newagents = []
-    print("iteration number: ", iteration_num)
+    #print("iteration number: ", iteration_num)
     random.shuffle(agents)
     for i in range(num_of_agents):
         if not agents[i].move():
@@ -95,7 +95,7 @@ matplotlib.pyplot.show()
 '''Environment Data output'''
 file = os.path.join(outputs, 'output_env.csv')
 with open(file, 'w', newline='') as q1:
-    writer = csv.writer(q1, delimiter=' ')
+    writer = csv.writer(q1, delimiter=',')
     for row in environment:
         writer.writerow(row)
 print("Environment data is located in " + file)
@@ -104,9 +104,7 @@ print("Environment data is located in " + file)
 '''Density Data output'''
 file = os.path.join(outputs, 'output_heatmap.csv')
 with open(file, 'w', newline='') as q1:
-    writer = csv.writer(q1, delimiter=' ')
+    writer = csv.writer(q1, delimiter=',')
     for row in heatmap:
         writer.writerow(row)
 print("Heatmap data is located in " + file)
-
-
